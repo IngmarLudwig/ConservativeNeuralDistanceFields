@@ -43,7 +43,8 @@ sudo apt-get update && apt-get install build-essential
    cmake ..
    make
    ```
-3. Install Python 3.13
+3. Install Python 3.13    
+   
 Linux:
 ```bash
 sudo add-apt-repository ppa:deadsnakes/ppa
