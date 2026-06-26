@@ -72,7 +72,7 @@ pip install torch torchvision jupyter matplotlib mouette miniball scikit-image d
 2. Optionally, replace drill with another shape of your choice 
 3. Modify settings
    1. To reduce the runtime, one might reduce `fixed_n_outside_points_train` and `n_test_points` or increase `max_edge_length_tets_in`.
-   2. To increase the resolution, one might increase the model size by changing `layer_width_model` and `num_hidden_layer_model`, and increase training time with `epochs_per_lr`. If further increasing the model size no longer improves the results, one might also decrease `max_edge_length_tets_in`.
+   2. To increase the resolution, one might increase the model size by changing `layer_width_model` and `num_hidden_layer_model`, and increase training time with `epochs_per_lr`. If further increasing the model size and the training time no longer improves the results, one might also decrease `max_edge_length_tets_in`.
    3. If one is not interested in the distance field, volume excess can be further reduced by setting the `gammas` to zero.
    4. If one wants to improve the absolute distance error further away from the surface, one should increase the `offset` to the desired extent. One might also slightly increase the `gammas` in this case.
 4. Run Jupyter notebook
