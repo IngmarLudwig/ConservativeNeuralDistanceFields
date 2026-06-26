@@ -62,17 +62,7 @@ source .venv/bin/activate
 
 5. Install dependencies
 ```bash
-pip install torch torchvision
-pip install jupyter
-pip install matplotlib
-pip install mouette
-pip install miniball
-pip install scikit-image
-pip install deel-torchlip
-pip install libigl
-pip install tqdm
-pip install pyvista
-pip install trame trame-vtk trame-vuetify -q
+pip install torch torchvision jupyter matplotlib mouette miniball scikit-image deel-torchlip libigl tqdm pyvista trame trame-vtk trame-vuetify
 ```
 
 ### Create Neural Distance Field
