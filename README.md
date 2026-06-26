@@ -33,7 +33,9 @@ apt install cmake
 sudo apt-get update && apt-get install build-essential
 ```
 2. Install tetgen
+   
 2.1 Download tetgen 1.6.0 from  https://wias-berlin.de/software/ and put the folder in the root repository.
+
 2.2 Rename the tetgen folder to tetgen1.6.0 if it is not already the case.
 ```bash
 cd tetgen1.6.0 
