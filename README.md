@@ -66,16 +66,13 @@ pip install torch torchvision jupyter matplotlib mouette miniball scikit-image d
 ```
 
 ### Create Neural Distance Field
-1. Open notebook
-Open templates/training_template.ipynb
-2. Set Shape
-Replace drill with another shape of your choice (as found in meshes)
+1. Open templates/training_template.ipynb
+2. Optionally, replace drill with another shape of your choice 
 3. Modify settings
-To reduce the runtime, one might reduce `fixed_n_outside_points_train` and `n_test_points` or increase `max_edge_length_tets_in`.
-To increase the resolution, one might increase the model size by changing `layer_width_model` and `num_hidden_layer_model`, and increase training time with `epochs_per_lr`. If the model size is saturated, one might also decrease `max_edge_length_tets_in`.
-If one is not interested in the distance field, volume excess can be further reduced by setting the `gammas` to zero.
-If one wants to improve the absolute distance error further away from the surface, one should increase the `offset` to the desired extent. One might also slightly increase the `gammas` in this case.
+   1. To reduce the runtime, one might reduce `fixed_n_outside_points_train` and `n_test_points` or increase `max_edge_length_tets_in`.
+   2. To increase the resolution, one might increase the model size by changing `layer_width_model` and `num_hidden_layer_model`, and increase training time with `epochs_per_lr`. If the model size is saturated, one might also decrease `max_edge_length_tets_in`.
+   3. If one is not interested in the distance field, volume excess can be further reduced by setting the `gammas` to zero.
+   4. If one wants to improve the absolute distance error further away from the surface, one should increase the `offset` to the desired extent. One might also slightly increase the `gammas` in this case.
 4. Run Jupyter notebook
-Execute the notebook.
 
 Note that the two-sided SDF option described in the paper is not explicitly included in the code for clarity. It can essentially be replicated by training two one-sided DFs. Feel free to contact us for details.
