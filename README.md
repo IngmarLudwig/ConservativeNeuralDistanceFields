@@ -33,17 +33,15 @@ apt install cmake
 sudo apt-get update && apt-get install build-essential
 ```
 2. Install tetgen
-   
-2.1 Download tetgen 1.6.0 from  https://wias-berlin.de/software/ and put the folder in the root repository.
-
-2.2 Rename the tetgen folder to tetgen1.6.0 if it is not already the case.
-```bash
-cd tetgen1.6.0 
-mkdir build
-cd build
-cmake ..
-make
-```
+   1. Download tetgen 1.6.0 from  https://wias-berlin.de/software/ and put the folder in the root repository.
+   2. Rename the tetgen folder to tetgen1.6.0 if it is not already the case.
+   ```bash
+   cd tetgen1.6.0 
+   mkdir build
+   cd build
+   cmake ..
+   make
+   ```
 3. Install Python 3.13
 Linux:
 ```bash
@@ -56,7 +54,7 @@ Mac:
 brew install python@3.13
 ```
 
-4. 1. Create a virtual environment in the root directory and activate it.
+4. Create a virtual environment in the root directory and activate it.
 ```bash
 python3.13 -m venv .venv 
 source .venv/bin/activate
