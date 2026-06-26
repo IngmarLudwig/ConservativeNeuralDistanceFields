@@ -35,6 +35,7 @@ sudo apt-get update && apt-get install build-essential
 2. Install tetgen
    1. Download tetgen 1.6.0 from  https://wias-berlin.de/software/ and put the folder in the root repository.
    2. Rename the tetgen folder to tetgen1.6.0 if it is not already the case.
+   3. Build tetgen
    ```bash
    cd tetgen1.6.0 
    mkdir build
