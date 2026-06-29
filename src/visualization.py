@@ -132,10 +132,10 @@ def visualize_distance_field_cross_section(model, lower_point, upper_point, axis
     Visualizes the model's distance field as a 2D cross-section scatter plot.
 
     Samples random points in the specified cross-section plane within the bounding box,
-    evaluates the model SDF on them, and renders a scatter plot colored by SDF value.
+    evaluates the model DF on them, and renders a scatter plot colored by DF value.
 
     Args:
-        model:        Neural network model (callable, returns SDF values).
+        model:        Neural network model (callable, returns DF values).
         lower_point:  Lower AABB bound (torch.Tensor or array-like, shape [3]).
         upper_point:  Upper AABB bound (torch.Tensor or array-like, shape [3]).
         axis:         Axis normal to the cross-section plane ('x', 'y', or 'z').
@@ -156,29 +156,29 @@ def visualize_distance_field_cross_section(model, lower_point, upper_point, axis
     pts_3d[:, axes_2d[1]] = pts_2d[:, 1]
 
     pts_tensor = torch.tensor(pts_3d)
-    sdf_values = []
+    df_values = []
     with torch.no_grad():
         for i in range(0, n_points, batch_size):
-            sdf_values.append(model(pts_tensor[i:i + batch_size]).cpu().numpy().flatten())
-    sdf_values = np.concatenate(sdf_values)
+            df_values.append(model(pts_tensor[i:i + batch_size]).cpu().numpy().flatten())
+    df_values = np.concatenate(df_values)
 
     axis_labels = ['x', 'y', 'z']
     xlabel = axis_labels[axes_2d[0]]
     ylabel = axis_labels[axes_2d[1]]
-    vmax = float(np.abs(sdf_values).max())
+    vmax = float(np.abs(df_values).max())
 
-    outside = sdf_values >= 0
+    outside = df_values >= 0
 
     fig, ax = plt.subplots(figsize=(8, 8))
     ax.set_facecolor('white')
-    sc = ax.scatter(pts_2d[outside, 0], pts_2d[outside, 1], c=sdf_values[outside], cmap="YlGn", s=1, vmin=0, vmax=vmax)
-    plt.colorbar(sc, ax=ax, label='SDF')
+    sc = ax.scatter(pts_2d[outside, 0], pts_2d[outside, 1], c=df_values[outside], cmap="YlGn", s=1, vmin=0, vmax=vmax)
+    plt.colorbar(sc, ax=ax, label='DF')
 
     # Contour lines on scattered data via triangulation (all points for correct topology)
     triang = plt.matplotlib.tri.Triangulation(pts_2d[:, 0], pts_2d[:, 1])
     positive_levels = np.linspace(0, vmax, 16)[1:]  # exclude 0, only above zero
-    ax.tricontour(triang, sdf_values, levels=positive_levels, colors='gray', linewidths=0.5, alpha=0.6)
-    ax.tricontour(triang, sdf_values, levels=[0], colors='blue', linewidths=1.5)
+    ax.tricontour(triang, df_values, levels=positive_levels, colors='gray', linewidths=0.5, alpha=0.6)
+    ax.tricontour(triang, df_values, levels=[0], colors='blue', linewidths=1.5)
 
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
